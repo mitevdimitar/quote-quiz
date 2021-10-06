@@ -1,6 +1,11 @@
 import './App.css';
+import { connect } from "react-redux";
+import { mapStateToProps } from './services/redux';
 
-function App() {
+function App({
+  settings
+}) {
+  console.log(settings)
   return (
     <div className="App">
       My app
@@ -8,4 +13,4 @@ function App() {
   );
 }
 
-export default App;
+export default connect(mapStateToProps/* , mapDispatchToProps */)(App);
