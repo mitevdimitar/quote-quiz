@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import Settings from "./Pages/settings";
 import Home from "./Pages/home";
+import MenuBar from './Components/menu_bar';
 
 function App({
   settings
@@ -16,9 +17,9 @@ function App({
   return (
     <Router>
       <div className="App">
-        My app
+        <MenuBar />
         <Switch>
-          <Route path="/login">
+          <Route path="/settings">
             <Settings />
           </Route>
           <Route path="/">
