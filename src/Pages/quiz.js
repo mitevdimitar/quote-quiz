@@ -4,14 +4,26 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Question from '../Components/question';
 import { getQuestions } from "../services/questions";
+import { connect } from "react-redux";
+import { mapStateToProps } from '../services/redux';
+import { QuizQuestions } from '../store/actions';
 
-const steps = ['Select campaign settings', 'Create an ad group', 'Create an ad'];
-
-function Quiz() {
+function Quiz({
+  quizQuestions,
+  dispatch
+}) {
+  const { questions } = quizQuestions;
   const [activeStep, setActiveStep] = useState(0);
+  //const [questions, setQuestions] = useState([]);
+  console.log(quizQuestions)
 
-  const getQuizQuestions = useCallback(()=>{
-    getQuestions();
+  const getQuizQuestions = useCallback(async ()=>{
+    const response = await getQuestions();
+    console.log(response.data)
+    if (response.status === 200) {
+      dispatch(QuizQuestions.setQuizQuestions(response.data));
+      //setQuestions(questions)
+    }
   }, []);
 
   useEffect(()=>{
@@ -19,12 +31,12 @@ function Quiz() {
       // eslint-disable-next-line
   }, [])
 
-  const totalSteps = () => {
-    return steps.length;
+  const totalQuestions = () => {
+    return questions.length;
   };
 
-  const isLastStep = () => {
-    return activeStep === totalSteps() - 1;
+  const isLastQuestion = () => {
+    return activeStep === totalQuestions() - 1;
   };
 
   const handleNext = () => {
@@ -40,21 +52,21 @@ function Quiz() {
     setActiveStep(0);
   };
 
-  const allStepsCompleted = () => {
-    //check if allStepsCompleted is true
+  const allQuestionsAnswered = () => {
+    //check if allQuestionsAnswered is true
   }
 
   const handleComplete = () => {
-    //set allStepsCompleted to true
+    //set allQuestionsAnswered to true
   }
 
   return (
     <Box sx={{ width: '100%' }}>
       <div>
-        {allStepsCompleted() ? (
+        {allQuestionsAnswered() ? (
           <React.Fragment>
             <Typography sx={{ mt: 2, mb: 1 }}>
-              All steps completed - you&apos;re finished
+              All questions answered - you&apos;re finished
             </Typography>
             <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
               <Box sx={{ flex: '1 1 auto' }} />
@@ -65,7 +77,7 @@ function Quiz() {
           <React.Fragment>
             <Question 
               activeStep={activeStep}
-              step={steps[activeStep]}
+              question={questions[activeStep]}
             />
             <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
               <Button
@@ -77,7 +89,7 @@ function Quiz() {
                 Back
               </Button>
               <Box sx={{ flex: '1 1 auto' }} />
-              {isLastStep() ?
+              {isLastQuestion() ?
                 (
                   <Button onClick={handleComplete}>
                     Finish
@@ -98,4 +110,4 @@ function Quiz() {
   );
 }
 
-export default Quiz;
+export default connect(mapStateToProps)(Quiz);

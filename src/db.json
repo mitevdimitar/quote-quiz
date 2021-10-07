@@ -1,6 +1,52 @@
 {
-    "answers": [
-        "Answer 1", "Answer2", "Answer3"
+    "binary-questions": [
+        {
+            "id": 1,
+            "value": "Question 1",
+            "correct_answer": "Yes"
+        },
+        {
+            "id": 2,
+            "value": "Question 2",
+            "correct_answer": "No"
+        },
+        {
+            "id": 3,
+            "value": "Question 3",
+            "correct_answer": "No"
+        }
+    ],
+    "multiple-questions": [
+        {
+            "id": 1,
+            "value": "Question 2.1",
+            "correct_answer": "Maybe",
+            "options": [
+                "Maybe",
+                "Why not",
+                "True"
+            ]
+        },
+        {
+            "id": 2,
+            "value": "Question 2.2",
+            "correct_answer": "Why not",
+            "options": [
+                "Maybe",
+                "Why not",
+                "False"
+            ]
+        },
+        {
+            "id": 3,
+            "value": "Question 2.3",
+            "correct_answer": "True",
+            "options": [
+                "Haha",
+                "Why not",
+                "True"
+            ]
+        }
     ]
   }
   

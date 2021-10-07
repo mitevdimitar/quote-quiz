@@ -1,4 +1,4 @@
-import { SET_QUIZ_SETTINGS } from "../constants";
+import { SET_QUIZ_SETTINGS, SET_QUESTIONS } from "../constants";
 
 export const QuizSettings = {
     setQuizSettings: (data) =>
@@ -6,4 +6,12 @@ export const QuizSettings = {
         type: SET_QUIZ_SETTINGS,
         data,
     })
+}
+
+export const QuizQuestions = {
+  setQuizQuestions: (data) =>
+    Object.assign({
+      type: SET_QUESTIONS,
+      data,
+  })
 }
