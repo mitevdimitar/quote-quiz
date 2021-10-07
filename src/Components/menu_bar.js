@@ -16,7 +16,8 @@ function MenuBar() {
     return (
       <AppBar position="static">
         <Toolbar className={classes.toolbar}>
-          <Button href="/settings" color="inherit">Settings</Button>
+            <Button href="/quiz" color="inherit">Quiz</Button>
+            <Button href="/settings" color="inherit">Settings</Button>
         </Toolbar>
       </AppBar>
   );
