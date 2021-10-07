@@ -1,13 +1,23 @@
-import * as React from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Question from '../Components/question';
+import { getQuestions } from "../services/questions";
 
 const steps = ['Select campaign settings', 'Create an ad group', 'Create an ad'];
 
 function Quiz() {
-  const [activeStep, setActiveStep] = React.useState(0);
+  const [activeStep, setActiveStep] = useState(0);
+
+  const getQuizQuestions = useCallback(()=>{
+    getQuestions();
+  }, []);
+
+  useEffect(()=>{
+      getQuizQuestions();
+      // eslint-disable-next-line
+  }, [])
 
   const totalSteps = () => {
     return steps.length;
