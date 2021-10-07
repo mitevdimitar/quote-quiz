@@ -1,6 +1,4 @@
 import './App.css';
-import { connect } from "react-redux";
-import { mapStateToProps } from './services/redux';
 import {
   BrowserRouter as Router,
   Switch,
@@ -18,9 +16,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function App({
-  settings
-}) {
+function App() {
   const classes = useStyles();
 
   return (
@@ -43,4 +39,4 @@ function App({
   );
 }
 
-export default connect(mapStateToProps/* , mapDispatchToProps */)(App);
+export default App;
