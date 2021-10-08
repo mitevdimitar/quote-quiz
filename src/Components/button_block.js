@@ -5,11 +5,12 @@ import { makeStyles } from '@mui/styles';
 import { connect } from "react-redux";
 import { mapStateToProps } from '../services/redux';
 import { QuizQuestions } from '../store/actions';
+import { isMobileDevice } from "../services/mobile";
 
 const useStyles = makeStyles((theme) => ({
   buttonContainer: {
     position: "absolute",
-    bottom: 30,
+    bottom: isMobileDevice() ? 10 : 30,
     width: "100%"
   },
   backButton: {

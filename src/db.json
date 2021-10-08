@@ -94,7 +94,7 @@
         },
         {
             "id": 15,
-            "value": "From which Ray Bradbury’s books is the following quote 'Way out in the country tonight he could smell the pumpkins ripening toward the knife and the triangle eye and the singeing candle'",
+            "value": "From which Ray Bradbury’s book is the quote 'Way out in the country tonight he could smell the pumpkins ripening toward the knife'",
             "correct_answer": "Dandelion wine",
             "options": [
                 "The Halloween tree",
@@ -104,7 +104,7 @@
         },
         {
             "id": 16,
-            "value": "The author of the following quote: 'He was staring at the instruments with the air of one who is trying to convert Fahrenheit to centigrade in his head while his house is burning down' is:",
+            "value": "The quote 'He was staring at the instruments with the air of one who is trying to convert Fahrenheit to centigrade in his head while his house is burning down' is from:",
             "correct_answer": "Douglas Adams",
             "options": [
                 "Ray Bradbury",

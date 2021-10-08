@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import { mapStateToProps } from '../services/redux';
 import { QuizQuestions } from '../store/actions';
 import Notification from "./notification";
+import { isMobileDevice } from "../services/mobile";
 
 const useStyles = makeStyles((theme) => ({
     messageContainer: {
@@ -20,9 +21,9 @@ const useStyles = makeStyles((theme) => ({
         textAlign: "center",
         border: "1px solid #1A76D2",
         borderRadius: 10,
-        minHeight: 65,
-        marginTop: "50px !important",
-        fontSize: "1.3rem",
+        minHeight: isMobileDevice() ? 35 : 65,
+        marginTop: "30px !important",
+        fontSize: isMobileDevice() ? "1.1rem" : "1.3rem",
         "&:hover": {
             border: "2px solid #1A76D2"
         },
@@ -74,7 +75,7 @@ function Question({
             )}
             {question ? (
                 <>
-                    <Typography className={classes.header} variant="h4" sx={{ mt: 4, mb: 2 }}>{question.value}</Typography>
+                    <Typography className={classes.header} variant={isMobileDevice() ? "h6" : "h4"} sx={{ mt: 4, mb: 2 }}>{question.value}</Typography>
                     <Grid container item justifyContent="center">            
                         {options && options.map((answer, i)=>{
                             return (
