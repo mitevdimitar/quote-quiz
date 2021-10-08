@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import { makeStyles } from '@mui/styles';
 import { connect } from "react-redux";
 import { mapStateToProps } from '../services/redux';
+import { QuizQuestions } from '../store/actions';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -27,16 +28,24 @@ const useStyles = makeStyles((theme) => ({
 
 function Question({
     settings,
-    quizQuestions
+    quizQuestions,
+    dispatch
 }) {
     const classes = useStyles();
-    const { questions, activeStep } = quizQuestions;
+    const { questions, activeStep, answers } = quizQuestions;
+    const selected = answers[activeStep] ? answers[activeStep] : "";
+    console.log(answers)
     const question = questions[activeStep];
-    const answers = settings.quizMode === "binary" ? ["Yes", "No"] : question.options;
-    const [selected, setSelected] = useState("");
+    const options = settings.quizMode === "binary" ? ["Yes", "No"] : question.options;
 
     const isAnswerSelected = (answer) => {
         return answer === selected;
+    }
+
+    const selectAnswer = (answer) => {
+        if (!selected) {
+            dispatch(QuizQuestions.addAnswer(answer));
+        }
     }
 
     const showErrorMessage = () => {
@@ -53,18 +62,18 @@ function Question({
                 <>
                     <Typography variant="h3" sx={{ mt: 4, mb: 2 }}>{question.value}</Typography>
                     <Grid container item justifyContent="center">            
-                        {answers && answers.map((answer, i)=>{
+                        {options && options.map((answer, i)=>{
                             return (
                                 <Grid 
                                     key={i} 
                                     item 
                                     className={classes.answerOption} 
                                     style={{
-                                        cursor: "pointer", 
+                                        cursor: !selected && "pointer", 
                                         background: isAnswerSelected(answer) ? "#1A76D2" : "unset",
                                         color: isAnswerSelected(answer) ? "white" : "black",
                                     }}
-                                    onClick={()=>setSelected(answer)}
+                                    onClick={()=>selectAnswer(answer)}
                                 >
                                     {answer}
                                 </Grid>

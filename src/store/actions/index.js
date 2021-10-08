@@ -2,7 +2,9 @@ import {
   SET_QUIZ_SETTINGS, 
   SET_QUESTIONS, 
   SET_ACTIVE_STEP, 
-  SET_MODAL_OPEN
+  SET_MODAL_OPEN,
+  ADD_ANSWER,
+  SET_ALL_QUESTIONS_ANSWERED
 } from "../constants";
 
 export const QuizSettings = {
@@ -27,6 +29,16 @@ export const QuizQuestions = {
   setActiveStep: (data) =>
     Object.assign({
       type: SET_ACTIVE_STEP,
+      data,
+  }),
+  addAnswer: (data) =>
+    Object.assign({
+      type: ADD_ANSWER,
+      data,
+  }),
+  setAllQuestionsAnswered: (data) =>
+    Object.assign({
+      type: SET_ALL_QUESTIONS_ANSWERED,
       data,
   })
 }

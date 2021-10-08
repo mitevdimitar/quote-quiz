@@ -13,7 +13,7 @@ import { QuizSettings } from "../store/actions";
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        marginTop: 100
+        marginTop: 30
     },
     label: {
         marginBottom: 20,
