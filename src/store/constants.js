@@ -1,4 +1,7 @@
 export const SET_QUIZ_SETTINGS = "SET_QUIZ_SETTINGS";
+export const SET_MODAL_OPEN = "SET_MODAL_OPEN";
 
 export const SET_QUESTIONS = "SET_QUESTIONS";
+export const SET_ACTIVE_STEP = "SET_ACTIVE_STEP";
+export const SET_ADD_ANSWER = "SET_ADD_ANSWER";
 

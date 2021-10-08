@@ -1,7 +1,8 @@
 const axios = require('axios');
 
-export const getQuestions = async () => {
-    return await axios.get(`http://localhost:3001/binary-questions`)
+export const getQuestions = async (mode) => {
+    const endPoint = `http://localhost:3001/${mode}-questions`;
+    return await axios.get(endPoint)
       .then(function (response) {
         return response;
       })

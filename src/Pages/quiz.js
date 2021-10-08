@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
@@ -7,29 +7,41 @@ import { getQuestions } from "../services/questions";
 import { connect } from "react-redux";
 import { mapStateToProps } from '../services/redux';
 import { QuizQuestions } from '../store/actions';
+import { makeStyles } from '@mui/styles';
+
+const useStyles = makeStyles((theme) => ({
+  buttonContainer: {
+    position: "absolute",
+    bottom: 30,
+    width: "100%"
+  },
+  backButton: {
+    marginLeft: "50px !important"
+  },
+  nextButton: {
+    marginRight: "50px !important"
+  },
+}));
 
 function Quiz({
   quizQuestions,
-  dispatch
+  dispatch,
+  settings
 }) {
-  const { questions } = quizQuestions;
-  const [activeStep, setActiveStep] = useState(0);
-  //const [questions, setQuestions] = useState([]);
-  console.log(quizQuestions)
+  const classes = useStyles();
+  const { questions, activeStep } = quizQuestions;
 
   const getQuizQuestions = useCallback(async ()=>{
-    const response = await getQuestions();
-    console.log(response.data)
-    if (response.status === 200) {
+    const response = await getQuestions(settings.quizMode);
+    if (response && response.status === 200) {
       dispatch(QuizQuestions.setQuizQuestions(response.data));
-      //setQuestions(questions)
     }
-  }, []);
+  }, [dispatch, settings.quizMode]);
 
   useEffect(()=>{
       getQuizQuestions();
       // eslint-disable-next-line
-  }, [])
+  }, [settings.quizMode])
 
   const totalQuestions = () => {
     return questions.length;
@@ -41,15 +53,16 @@ function Quiz({
 
   const handleNext = () => {
     const newActiveStep = activeStep + 1;
-    setActiveStep(newActiveStep);
+    dispatch(QuizQuestions.setActiveStep(newActiveStep));
   };
 
   const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
+    const newActiveStep = activeStep > 0 ? activeStep - 1 : 0;
+    dispatch(QuizQuestions.setActiveStep(newActiveStep));
   };
 
   const handleReset = () => {
-    setActiveStep(0);
+    dispatch(QuizQuestions.setActiveStep(0));
   };
 
   const allQuestionsAnswered = () => {
@@ -75,29 +88,27 @@ function Quiz({
           </React.Fragment>
         ) : (
           <React.Fragment>
-            <Question 
-              activeStep={activeStep}
-              question={questions[activeStep]}
-            />
-            <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
+            <Question />
+            <Box className={classes.buttonContainer} sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
               <Button
                 color="inherit"
                 disabled={activeStep === 0}
                 onClick={handleBack}
                 sx={{ mr: 1 }}
+                className={classes.backButton}
               >
                 Back
               </Button>
               <Box sx={{ flex: '1 1 auto' }} />
               {isLastQuestion() ?
                 (
-                  <Button onClick={handleComplete}>
+                  <Button onClick={handleComplete} className={classes.nextButton}>
                     Finish
                   </Button>
                 )
                 :
                 (
-                <Button onClick={handleNext} sx={{ mr: 1 }}>
+                <Button onClick={handleNext} sx={{ mr: 1 }} className={classes.nextButton}>
                   Next
                 </Button>
                 )

@@ -30,7 +30,7 @@ function Settings({
     dispatch
 }) {
     const classes = useStyles();
-    const [mode, setMode] = useState("binary")
+    const [mode, setMode] = useState(settings.quizMode)
 
     const onModeChange = (event) => {
         setMode(event.target.value);
@@ -38,6 +38,7 @@ function Settings({
 
     const onModeSave = () => {
         dispatch(QuizSettings.setQuizSettings(mode));
+        dispatch(QuizSettings.setModalOpen(false))
     }
 
     return (

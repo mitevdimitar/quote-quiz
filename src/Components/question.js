@@ -26,27 +26,34 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Question({
-    activeStep,
     settings,
     quizQuestions
 }) {
-    const { questions } = quizQuestions;
+    const classes = useStyles();
+    const { questions, activeStep } = quizQuestions;
     const question = questions[activeStep];
     const answers = settings.quizMode === "binary" ? ["Yes", "No"] : question.options;
     const [selected, setSelected] = useState("");
-    const classes = useStyles();
 
     const isAnswerSelected = (answer) => {
         return answer === selected;
     }
-    
+
+    const showErrorMessage = () => {
+            return (
+                <Typography>
+                    {"Oops, it seems that you forgot to start the JSON server. Please run the command: npx json-server --watch src/db.json --port 3001 and reload the page!"}
+                </Typography>
+            )
+    }
+
     return (
         <Grid container justifyContent="center" className={classes.root}>
-            {question && (
+            {question ? (
                 <>
                     <Typography variant="h3" sx={{ mt: 4, mb: 2 }}>{question.value}</Typography>
                     <Grid container item justifyContent="center">            
-                        {answers.map((answer, i)=>{
+                        {answers && answers.map((answer, i)=>{
                             return (
                                 <Grid 
                                     key={i} 
@@ -64,6 +71,10 @@ function Question({
                             )
                         })}
                     </Grid>
+                </>
+            ) : (
+                <>
+                    {showErrorMessage()}
                 </>
             )}
         </Grid>

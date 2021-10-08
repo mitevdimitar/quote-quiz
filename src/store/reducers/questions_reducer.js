@@ -1,7 +1,9 @@
-import { SET_QUESTIONS } from "../constants";
+import { SET_ACTIVE_STEP, SET_QUESTIONS } from "../constants";
 
 const initialState = {
-    questions: []
+    questions: [],
+    activeStep: 0,
+    answers: []
   };
   
 const questionsReducer = (state = Object.assign({}, initialState), action) => {
@@ -10,6 +12,10 @@ const questionsReducer = (state = Object.assign({}, initialState), action) => {
         case SET_QUESTIONS:
             return Object.assign({}, state, {
                 questions: data,
+            });
+        case SET_ACTIVE_STEP:
+            return Object.assign({}, state, {
+                activeStep: data,
             });
         default:
             return state;
