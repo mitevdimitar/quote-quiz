@@ -71,7 +71,13 @@ function QuizRezult({
                 </Grid>
             </Grid>
             <Grid container item justifyContent="center" className={classes.buttonContainer}>
-              <Button onClick={handleReset}>Restart</Button>
+                <Button 
+                    onClick={handleReset}
+                    size="medium"
+                    variant="contained"
+                >
+                    Restart
+                </Button>
             </Grid>
         </Grid>
     )

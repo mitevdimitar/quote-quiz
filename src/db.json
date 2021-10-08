@@ -2,49 +2,154 @@
     "binary-questions": [
         {
             "id": 1,
-            "value": "Question 1",
+            "value": "Тhe quote 'The world is indeed comic, but the joke is on mankind' belongs to H.P. Lovecraft?",
             "correct_answer": "Yes"
         },
         {
             "id": 2,
-            "value": "Question 2",
+            "value": "'Wisdom comes to us when it can no longer do any good' Is this a quote by Alfred Tennyson?",
             "correct_answer": "No"
         },
         {
             "id": 3,
-            "value": "Question 3",
+            "value": "Is Stephen King the author of the following quote 'People think that I must be a very strange person. This is not correct. I have the heart of a small boy. It is in a glass jar on my desk.'?",
+            "correct_answer": "Yes"
+        },
+        {
+            "id": 4,
+            "value": "'A dreamer is one who can only find his way by moonlight, and his punishment is that he sees the dawn before the rest of the world' is a famous quote by Oscar Wild?",
+            "correct_answer": "Yes"
+        },
+        {
+            "id": 5,
+            "value": "'Find what you love and let it kill you' is a famous quote by Jack Kerouac?",
             "correct_answer": "No"
+        },
+        {
+            "id": 6,
+            "value": "'But the silence was unbroken, and the stillness gave no token, and the only word there spoken was the whispered word, Lenore?' is a quote from 'The Raven' by Edgar Allan Poe?",
+            "correct_answer": "Yes"
+        },
+        {
+            "id": 7,
+            "value": "Is the following quote belonging to Elon Musk? 'You can't try to do things, you simply must do them'",
+            "correct_answer": "No"
+        },
+        {
+            "id": 8,
+            "value": "The quote 'A word is dead when it is said, some say. I say it just begins to live that day' belongs to Emily Dickinson",
+            "correct_answer": "Yes"
+        },
+        {
+            "id": 9,
+            "value": "The author of the following quote is J.K. Rowling: 'A little magic can take you a long way'",
+            "correct_answer": "No"
+        },
+        {
+            "id": 10,
+            "value": "'Don't think for a moment that I'm really like any of the characters I've played. I'm not. That's why it's called acting' is a quote by the Hollywood actor Leonardo Di Caprio",
+            "correct_answer": "Yes"
         }
     ],
     "multiple-questions": [
         {
-            "id": 1,
-            "value": "Question 2.1",
-            "correct_answer": "Maybe",
+            "id": 11,
+            "value": "Choose the person that the given quote belongs to: 'I don’t want to be CEO of anything!'",
+            "correct_answer": "Elon Musk",
             "options": [
-                "Maybe",
-                "Why not",
-                "True"
+                "Elon Musk",
+                "Steve Jobs",
+                "Mark Zuckerberg"
             ]
         },
         {
-            "id": 2,
-            "value": "Question 2.2",
-            "correct_answer": "Why not",
+            "id": 12,
+            "value": "Read the following quote and choose its author: 'Don’t let schooling interfere with your education'",
+            "correct_answer": "Mark Twain",
             "options": [
-                "Maybe",
-                "Why not",
-                "False"
+                "Robert Frost",
+                "Mark Twain",
+                "Oprah Winfrey"
             ]
         },
         {
-            "id": 3,
-            "value": "Question 2.3",
-            "correct_answer": "True",
+            "id": 13,
+            "value": "The quote 'Try not to become a man of success, but rather try to become a man of value' belongs to:",
+            "correct_answer": "Albert Einstein",
             "options": [
-                "Haha",
-                "Why not",
-                "True"
+                "Dalai Lama",
+                "Albert Einstein",
+                "Bill Gates"
+            ]
+        },
+        {
+            "id": 14,
+            "value": "The given quote belongs to: 'One has to discover everything for oneself. And get over it all alone'",
+            "correct_answer": "Tove Jansson",
+            "options": [
+                "Tove Jansson",
+                "Lewis Carroll",
+                "Richard Bach"
+            ]
+        },
+        {
+            "id": 15,
+            "value": "From which Ray Bradbury’s books is the following quote 'Way out in the country tonight he could smell the pumpkins ripening toward the knife and the triangle eye and the singeing candle'",
+            "correct_answer": "Dandelion wine",
+            "options": [
+                "The Halloween tree",
+                "Fahrenheit 451",
+                "Dandelion wine"
+            ]
+        },
+        {
+            "id": 16,
+            "value": "The author of the following quote: 'He was staring at the instruments with the air of one who is trying to convert Fahrenheit to centigrade in his head while his house is burning down' is:",
+            "correct_answer": "Douglas Adams",
+            "options": [
+                "Ray Bradbury",
+                "Douglas Adams",
+                "Terry Pratchett"
+            ]
+        },
+        {
+            "id": 17,
+            "value": "To which author belongs the quote: 'If people think nature is their friend, then they sure don't need an enemy'",
+            "correct_answer": "Kurt Vonnegut",
+            "options": [
+                "Kurt Vonnegut",
+                "Erskine Caldwell",
+                "Ernest Hemingway"
+            ]
+        },
+        {
+            "id": 18,
+            "value": "The quote 'Life is really simple, but we insist on making it complicated' belongs to:",
+            "correct_answer": "Confucius",
+            "options": [
+                "Aristotle",
+                "Plato",
+                "Confucius"
+            ]
+        },
+        {
+            "id": 19,
+            "value": "Choose the person that the given quote belongs to: 'Life itself is the most wonderful fairy tale'",
+            "correct_answer": "Hans Christian Andersen",
+            "options": [
+                "Charles Perrault",
+                "Hans Christian Andersen",
+                "Lewis Carroll"
+            ]
+        },
+        {
+            "id": 20,
+            "value": "The given quote 'Life is what happens when you're busy making other plans' belongs to:",
+            "correct_answer": "John Lennon",
+            "options": [
+                "Nelson Mandela",
+                "John Lennon",
+                "Benjamin Franklin"
             ]
         }
     ]

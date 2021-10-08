@@ -22,9 +22,14 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: 10,
         minHeight: 65,
         marginTop: "50px !important",
+        fontSize: "1.3rem",
         "&:hover": {
             border: "2px solid #1A76D2"
         },
+    },
+    header: {
+        width: "80%",
+        textAlign: "center"
     }
 }));
 
@@ -69,7 +74,7 @@ function Question({
             )}
             {question ? (
                 <>
-                    <Typography variant="h3" sx={{ mt: 4, mb: 2 }}>{question.value}</Typography>
+                    <Typography className={classes.header} variant="h4" sx={{ mt: 4, mb: 2 }}>{question.value}</Typography>
                     <Grid container item justifyContent="center">            
                         {options && options.map((answer, i)=>{
                             return (

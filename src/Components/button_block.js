@@ -58,19 +58,34 @@ function ButtonBlock({
                 onClick={handleBack}
                 sx={{ mr: 1 }}
                 className={classes.backButton}
+                size="medium"
+                variant="contained"
               >
                 Back
               </Button>
               <Box sx={{ flex: '1 1 auto' }} />
               {isLastQuestion() ?
                 (
-                  <Button disabled={!selected} onClick={handleComplete} className={classes.nextButton}>
+                  <Button 
+                    disabled={!selected} 
+                    onClick={handleComplete} 
+                    className={classes.nextButton}
+                    size="medium"
+                    variant="contained"
+                  >
                     Finish
                   </Button>
                 )
                 :
                 (
-                <Button disabled={!selected} onClick={handleNext} sx={{ mr: 1 }} className={classes.nextButton}>
+                <Button 
+                  disabled={!selected} 
+                  onClick={handleNext} 
+                  sx={{ mr: 1 }} 
+                  className={classes.nextButton}
+                  size="medium"
+                  variant="contained"
+                >
                   Next
                 </Button>
                 )
