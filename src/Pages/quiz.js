@@ -1,13 +1,12 @@
 import React, { useCallback, useEffect } from 'react';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
 import Question from '../Components/question';
 import { getQuestions } from "../services/questions";
 import { connect } from "react-redux";
 import { mapStateToProps } from '../services/redux';
 import { QuizQuestions } from '../store/actions';
 import ButtonBlock from '../Components/button_block';
+import QuizRezult from '../Components/quiz_result';
 
 function Quiz({
   dispatch,
@@ -27,23 +26,11 @@ function Quiz({
       // eslint-disable-next-line
   }, [settings.quizMode])
 
-  const handleReset = () => {
-    dispatch(QuizQuestions.setActiveStep(0));
-  };
-
   return (
     <Box sx={{ width: '100%' }}>
       <div>
         {allQuestionsAnswered ? (
-          <React.Fragment>
-            <Typography sx={{ mt: 2, mb: 1 }}>
-              All questions answered - you&apos;re finished
-            </Typography>
-            <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
-              <Box sx={{ flex: '1 1 auto' }} />
-              <Button onClick={handleReset}>Reset</Button>
-            </Box>
-          </React.Fragment>
+          <QuizRezult />
         ) : (
           <React.Fragment>
             <Question />
