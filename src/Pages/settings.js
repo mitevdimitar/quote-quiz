@@ -9,7 +9,7 @@ import Button from '@mui/material/Button';
 import { makeStyles } from '@mui/styles';
 import { connect } from "react-redux";
 import { mapStateToProps } from '../services/redux';
-import { QuizSettings } from "../store/actions";
+import { QuizSettings, QuizQuestions } from "../store/actions";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -39,6 +39,7 @@ function Settings({
     const onModeSave = () => {
         dispatch(QuizSettings.setQuizSettings(mode));
         dispatch(QuizSettings.setModalOpen(false))
+        dispatch(QuizQuestions.resetQuestionsInfo());
     }
 
     return (

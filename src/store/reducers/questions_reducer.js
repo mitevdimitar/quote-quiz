@@ -3,7 +3,8 @@ import {
     SET_ACTIVE_STEP, 
     SET_ALL_QUESTIONS_ANSWERED, 
     SET_QUESTIONS,
-    ADD_NOTIFICATION
+    ADD_NOTIFICATION,
+    RESET_QUESTIONS_INFO
 } from "../constants";
 
 const initialState = {
@@ -40,6 +41,13 @@ const questionsReducer = (state = Object.assign({}, initialState), action) => {
             updatedNotifications.push(data);
             return Object.assign({}, state, {
                 notifications: updatedNotifications,
+            });
+        case RESET_QUESTIONS_INFO:
+            return Object.assign({}, state, {
+                answers: [],
+                activeStep: 0,
+                notifications: [],
+                allQuestionsAnswered: false
             });
         default:
             return state;

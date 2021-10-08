@@ -8,8 +8,9 @@ import { QuizQuestions } from '../store/actions';
 import Notification from "./notification";
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-        //minHeight: "80vh"
+    messageContainer: {
+        marginTop: 50,
+        marginLeft: 20
     },
     answerOption: {
         display: "flex",
@@ -30,7 +31,8 @@ const useStyles = makeStyles((theme) => ({
 function Question({
     settings,
     quizQuestions,
-    dispatch
+    dispatch,
+    message
 }) {
     const classes = useStyles();
     const { questions, activeStep, answers } = quizQuestions;
@@ -58,16 +60,8 @@ function Question({
         }
     }
 
-    const showErrorMessage = () => {
-            return (
-                <Typography>
-                    {"Oops, it seems that you forgot to start the JSON server. Please run the command: npx json-server --watch src/db.json --port 3001 and reload the page!"}
-                </Typography>
-            )
-    }
-
     return (
-        <Grid container justifyContent="center" className={classes.root}>
+        <Grid container justifyContent="center">
             {selected && (
                 <Notification 
                     open={true} 
@@ -97,9 +91,9 @@ function Question({
                     </Grid>
                 </>
             ) : (
-                <>
-                    {showErrorMessage()}
-                </>
+                <Grid container className={classes.messageContainer}>
+                    {message}
+                </Grid>
             )}
         </Grid>
     )

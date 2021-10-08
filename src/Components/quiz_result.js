@@ -33,7 +33,7 @@ function QuizRezult({
     const [wrongAnswers, setWrongAnswers] = useState(0);
 
     const handleReset = () => {
-        dispatch(QuizQuestions.setActiveStep(0));
+        dispatch(QuizQuestions.resetQuestionsInfo());
     };
 
     const getResults = useCallback(() => {

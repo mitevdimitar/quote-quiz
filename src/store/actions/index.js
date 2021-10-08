@@ -5,7 +5,8 @@ import {
   SET_MODAL_OPEN,
   ADD_ANSWER,
   SET_ALL_QUESTIONS_ANSWERED,
-  ADD_NOTIFICATION
+  ADD_NOTIFICATION,
+  RESET_QUESTIONS_INFO
 } from "../constants";
 
 export const QuizSettings = {
@@ -46,5 +47,9 @@ export const QuizQuestions = {
     Object.assign({
       type: SET_ALL_QUESTIONS_ANSWERED,
       data,
+  }),
+  resetQuestionsInfo: () =>
+    Object.assign({
+      type: RESET_QUESTIONS_INFO,
   })
 }
