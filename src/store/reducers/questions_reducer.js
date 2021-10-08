@@ -2,14 +2,16 @@ import {
     ADD_ANSWER, 
     SET_ACTIVE_STEP, 
     SET_ALL_QUESTIONS_ANSWERED, 
-    SET_QUESTIONS 
+    SET_QUESTIONS,
+    ADD_NOTIFICATION
 } from "../constants";
 
 const initialState = {
     questions: [],
     activeStep: 0,
     answers: [],
-    allQuestionsAnswered: false
+    allQuestionsAnswered: false,
+    notifications: []
   };
   
 const questionsReducer = (state = Object.assign({}, initialState), action) => {
@@ -32,6 +34,12 @@ const questionsReducer = (state = Object.assign({}, initialState), action) => {
         case SET_ALL_QUESTIONS_ANSWERED:
             return Object.assign({}, state, {
                 allQuestionsAnswered: data,
+            });
+        case ADD_NOTIFICATION:
+            const updatedNotifications = [...state.notifications];
+            updatedNotifications.push(data);
+            return Object.assign({}, state, {
+                notifications: updatedNotifications,
             });
         default:
             return state;

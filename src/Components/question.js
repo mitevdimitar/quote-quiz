@@ -5,6 +5,7 @@ import { makeStyles } from '@mui/styles';
 import { connect } from "react-redux";
 import { mapStateToProps } from '../services/redux';
 import { QuizQuestions } from '../store/actions';
+import Notification from "./notification";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -34,7 +35,6 @@ function Question({
     const classes = useStyles();
     const { questions, activeStep, answers } = quizQuestions;
     const selected = answers[activeStep] ? answers[activeStep] : "";
-    console.log(answers)
     const question = questions[activeStep];
     const options = settings.quizMode === "binary" ? ["Yes", "No"] : question.options;
 
@@ -45,6 +45,16 @@ function Question({
     const selectAnswer = (answer) => {
         if (!selected) {
             dispatch(QuizQuestions.addAnswer(answer));
+            const correctAnswer = questions && questions[activeStep] && questions[activeStep].correct_answer;
+            let notification = {};
+            if (answer === correctAnswer) {
+                notification.message = `Correct! The right answer is ${correctAnswer}.`
+                notification.severity = "success"
+            } else {
+                notification.message = `Sorry, you are wrong! The right answer is ${correctAnswer}`
+                notification.severity = "error"
+            }
+            dispatch(QuizQuestions.addNotification(notification));
         }
     }
 
@@ -58,6 +68,11 @@ function Question({
 
     return (
         <Grid container justifyContent="center" className={classes.root}>
+            {selected && (
+                <Notification 
+                    open={true} 
+                />
+            )}
             {question ? (
                 <>
                     <Typography variant="h3" sx={{ mt: 4, mb: 2 }}>{question.value}</Typography>

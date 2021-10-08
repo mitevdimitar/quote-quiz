@@ -4,7 +4,8 @@ import {
   SET_ACTIVE_STEP, 
   SET_MODAL_OPEN,
   ADD_ANSWER,
-  SET_ALL_QUESTIONS_ANSWERED
+  SET_ALL_QUESTIONS_ANSWERED,
+  ADD_NOTIFICATION
 } from "../constants";
 
 export const QuizSettings = {
@@ -34,6 +35,11 @@ export const QuizQuestions = {
   addAnswer: (data) =>
     Object.assign({
       type: ADD_ANSWER,
+      data,
+  }),
+  addNotification: (data) =>
+    Object.assign({
+      type: ADD_NOTIFICATION,
       data,
   }),
   setAllQuestionsAnswered: (data) =>
